@@ -1,4 +1,4 @@
-class GitModel {
+class GitStateModel {
   int? id;
   String? nodeId;
   String? name;
@@ -79,7 +79,7 @@ class GitModel {
   int? watchers;
   String? defaultBranch;
 
-  GitModel(
+  GitStateModel(
       {this.id,
       this.nodeId,
       this.name,
@@ -160,7 +160,7 @@ class GitModel {
       this.watchers,
       this.defaultBranch});
 
-  GitModel.fromJson(Map<String, dynamic> json) {
+  GitStateModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     nodeId = json['node_id'];
     name = json['name'];

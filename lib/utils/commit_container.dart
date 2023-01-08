@@ -95,18 +95,21 @@ class CommitContainer extends StatelessWidget {
 
               //================================================================================================
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Statistics_Container(
-                      stats_details: "Total", number: stats!.total),
-                  const SizedBox(width: 10),
-                  Statistics_Container(
-                      stats_details: "Additions", number: stats!.additions),
-                  const SizedBox(width: 10),
-                  Statistics_Container(
-                      stats_details: "Deletions", number: stats!.deletions),
-                ],
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Statistics_Container(
+                        stats_details: "Total", number: stats!.total),
+                    const SizedBox(width: 10),
+                    Statistics_Container(
+                        stats_details: "Additions", number: stats!.additions),
+                    const SizedBox(width: 10),
+                    Statistics_Container(
+                        stats_details: "Deletions", number: stats!.deletions),
+                  ],
+                ),
               ),
             ],
           ),

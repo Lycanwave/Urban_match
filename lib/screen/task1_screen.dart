@@ -57,7 +57,7 @@ class _FirstTaskState extends State<FirstTask> {
                       },
                     );
                   } else {
-                    return CircularProgressIndicator();
+                    return Center(child: CircularProgressIndicator());
                   }
                 },
               ),

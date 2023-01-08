@@ -7,7 +7,8 @@ import 'package:urban_match_rohit/services/utilities/app_url.dart';
 
 class StateServices {
   Future<List<dynamic>> fetch_Git_State_Record() async {
-    final response = await http.get(Uri.parse(AppUrl.task1Url));
+    final response = await http
+        .get(Uri.parse(AppUrl.task1Url), headers: {'User-Agent': 'request'});
     print(response.statusCode);
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);

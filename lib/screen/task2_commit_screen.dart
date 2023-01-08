@@ -33,10 +33,11 @@ class Commit_Page extends StatelessWidget {
                           sha: snapshot.data!.sha.toString(),
                           commit: snapshot.data!.commit,
                           stats: snapshot.data!.stats,
+                          files: snapshot.data!.files,
                         );
                       });
                 } else {
-                  return CircularProgressIndicator();
+                  return Center(child: CircularProgressIndicator());
                 }
               },
             ),

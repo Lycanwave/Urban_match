@@ -23,6 +23,7 @@ class _SecondTaskState extends State<SecondTask> {
         child: Column(
           children: [
             Expanded(
+              //flex: ,
               child: FutureBuilder(
                 future: statesServices.fetch_Git_Last_Commit(),
                 builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
@@ -52,8 +53,12 @@ class _SecondTaskState extends State<SecondTask> {
                               height: 100,
                               // ignore: sort_child_properties_last
                               child: Listtile(
-                                title: snapshot.data![item]['sha'].toString(),
-                                url: snapshot.data![item]['url'].toString(),
+                                author: snapshot.data![item]['commit']['author']
+                                        ['name']
+                                    .toString(),
+                                message: snapshot.data![item]['commit']
+                                        ['message']
+                                    .toString(),
 
                                 //profileImage: snapshot.data![item]['owner'],
                               ),
@@ -64,7 +69,7 @@ class _SecondTaskState extends State<SecondTask> {
                       },
                     );
                   } else {
-                    return CircularProgressIndicator();
+                    return Center(child: CircularProgressIndicator());
                   }
                 },
               ),
@@ -77,22 +82,28 @@ class _SecondTaskState extends State<SecondTask> {
 }
 
 class Listtile extends StatelessWidget {
-  String title, url;
+  String author, message;
   //bool isPrivate;
 
   Listtile({
     super.key,
-    required this.title,
-    required this.url,
+    required this.author,
+    required this.message,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      //tileColor: Colors.amberAccent,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ListTile(
+        //tileColor: Colors.amberAccent,
 
-      title: Text(title),
-      subtitle: Text(url),
+        title: Text('Author: $author'),
+        subtitle: Padding(
+          padding: const EdgeInsets.fromLTRB(2, 10, 2, 10),
+          child: Text('Message: $message'),
+        ),
+      ),
     );
   }
 }

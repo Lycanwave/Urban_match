@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:urban_match_rohit/screen/task1_screen.dart';
+import 'package:urban_match_rohit/screen/task2_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -30,19 +31,26 @@ class HomePage extends StatelessWidget {
                   width: 100,
                   decoration: BoxDecoration(
                       border: Border.all(width: 1),
-                      //color: Colors.red,
+                      color: Colors.black,
                       borderRadius: BorderRadius.circular(40)),
                 ),
               ),
-              Container(
-                alignment: Alignment.center,
-                child: Text('Task2'),
-                height: 50,
-                width: 100,
-                decoration: BoxDecoration(
-                    border: Border.all(width: 1),
-                    //color: Colors.red,
-                    borderRadius: BorderRadius.circular(40)),
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => SecondTask()),
+                  );
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Text('Task2'),
+                  height: 50,
+                  width: 100,
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 1),
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(40)),
+                ),
               )
             ],
           ),

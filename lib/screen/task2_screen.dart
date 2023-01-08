@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:urban_match_rohit/model/git_model.dart';
 import 'package:urban_match_rohit/screen/task2_commit_screen.dart';
 import 'package:urban_match_rohit/services/state_service.dart';
 
@@ -16,18 +15,16 @@ class _SecondTaskState extends State<SecondTask> {
     StateServices statesServices = StateServices();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Commit Information'),
+        title: const Text('Commit Information'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
             Expanded(
-              //flex: ,
               child: FutureBuilder(
                 future: statesServices.fetch_Git_Last_Commit(),
                 builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
-                  print(snapshot.error.toString());
                   if (snapshot.hasData) {
                     return ListView.builder(
                       itemCount: snapshot.data!.length,
@@ -44,10 +41,7 @@ class _SecondTaskState extends State<SecondTask> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 37, 36, 36),
-                                  // border:
-                                  //     Border.all(width: 1, color: Colors.white54),
-                                  //color: Colors.red,
+                                  color: const Color.fromARGB(255, 37, 36, 36),
                                   borderRadius: BorderRadius.circular(20)),
 
                               height: 100,
@@ -59,8 +53,6 @@ class _SecondTaskState extends State<SecondTask> {
                                 message: snapshot.data![item]['commit']
                                         ['message']
                                     .toString(),
-
-                                //profileImage: snapshot.data![item]['owner'],
                               ),
                               width: MediaQuery.of(context).size.width,
                             ),
@@ -69,7 +61,7 @@ class _SecondTaskState extends State<SecondTask> {
                       },
                     );
                   } else {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   }
                 },
               ),

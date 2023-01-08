@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:urban_match_rohit/model/commit_model.dart';
 import 'package:urban_match_rohit/services/state_service.dart';
 
@@ -17,7 +14,7 @@ class Commit_Page extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Commit Page'),
+        title: const Text('Commit Page'),
       ),
       body: Column(
         children: [
@@ -37,7 +34,7 @@ class Commit_Page extends StatelessWidget {
                         );
                       });
                 } else {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 }
               },
             ),

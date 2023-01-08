@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:urban_match_rohit/screen/task1_screen.dart';
 
 import '../model/commit_model.dart';
 
@@ -19,8 +18,6 @@ class CommitContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //print(files!.length);
-    //print(files![0].filename.toString());
     String authorName = commit!.author!.name.toString();
     String authorEmail = commit!.author!.email.toString();
     DateTime authorDate = DateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
@@ -30,14 +27,12 @@ class CommitContainer extends StatelessWidget {
     String committerEmail = commit!.committer!.email.toString();
     DateTime committerDate = DateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
         .parse(commit!.committer!.date.toString());
-    //print(tempDate);
+
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          //Text('sha: $sha'),
-          //const SizedBox(height: 10),
           Column(
             children: [
               Container(
@@ -119,15 +114,14 @@ class CommitContainer extends StatelessWidget {
           Column(
             children: [
               ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 itemCount: files!.length,
                 itemBuilder: (context, index) {
-                  //print(index);
                   return Column(
                     children: [
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Files_Container(
                         fileName: files![index].filename.toString(),
                         status: files![index].status.toString(),
@@ -150,7 +144,9 @@ class CommitContainer extends StatelessWidget {
 }
 
 class Statistics_Container extends StatelessWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final number;
+  // ignore: non_constant_identifier_names
   String stats_details;
 
   Statistics_Container({
@@ -162,8 +158,6 @@ class Statistics_Container extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 25,
-      // width: 100,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: Colors.black,
